@@ -12,8 +12,7 @@ def update_task(taskid,new_status):
         for task in all_task:
             if task["taskid"] == taskid:
                 task["status"] = new_status
-                print(f"Task {taskid} is updated to {new_status}")
-                return
+                return(f"Task {taskid} is updated to {new_status}")
         return (f"Task {taskid} is not found")
 
 def remove_task(taskid):
