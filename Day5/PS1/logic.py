@@ -23,10 +23,7 @@ class logic:
     def list_all(self):
         return self.product
     
-    def apply_discount(self, productid,price, discount):
+    def apply_discount(self, discount):
         for i in self.product:
-            if i.productid == productid:
-                i.price = price - (price * discount/100)
-                return True
-            else:
-                return False
+            i.price = i.price - (i.price * discount/100)
+        return False

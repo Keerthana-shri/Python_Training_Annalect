@@ -24,7 +24,8 @@ def sort_by_location(all_tasks):
     return sorted(all_tasks, key=lambda x: x.location)
 
 def filter_by_location(all_tasks, location):
-    return [x for x in all_tasks if x.location == location]
+    # return [x for x in all_tasks if x.location == location]
+    return filter(lambda x:x.location == location, all_tasks)
 
 print("Sorting based on priority")
 a=sort_by_priority(all_tasks)

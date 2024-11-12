@@ -5,8 +5,8 @@ from product import Product
 def start():
 
     logic_object=logic()
-    # presentation_object=presentation()
-
+    #presentation_object=presentation()
+    
     from product import Product
     product_object = [
             Product(1, "Smartwatch", 1500),
@@ -26,11 +26,14 @@ def start():
     else:
         print ("Product ID is not found")
     
+    d= logic_object.apply_discount(50)
+    print("Product details after discount:")
+
     c= logic_object.list_all()
     print("All products are listed below:")
     for i in c:
         print(i)
-
     
+
 if __name__ == "__main__":
     start()
