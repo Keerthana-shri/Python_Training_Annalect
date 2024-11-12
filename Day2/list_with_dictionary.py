@@ -26,8 +26,7 @@ def remove_task(taskid):
 def print_all_tasks(): 
     #print(all_task)       
     if all_task:
-        for task in all_task:
-            return(f"taskId: {task["taskId"]} , status: {task["status"]}")
+        return all_task
     else:
         return ("No tasks available.")
 
@@ -60,7 +59,8 @@ def start():
         
         elif choice == "4":
             d=print_all_tasks()
-            print(d)
+            for task in d:
+                print(f"taskId: {task['taskid']} , status: {task['status']}")
         
         elif choice == "5":
             print("Exiting program.")
