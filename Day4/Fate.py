@@ -34,11 +34,11 @@ def fate():
         print ("Task ID not found")
 
 
-    # c= logic_object.remove_task(2)
-    # if c == True:
-    #     print("Task is removed")
-    # else:
-    #     print("TaskID not found")
+    c= logic_object.remove_task(2)
+    if c == True:
+        print("Task is removed")
+    else:
+        print("TaskID not found")
     
     d= logic_object.view_all()
     print("All tasks are listed below:")

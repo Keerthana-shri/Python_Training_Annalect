@@ -1,6 +1,6 @@
-from logic import logic
+from logic import Logic
 
-class presentation:
+class Presentation:
     pass
     '''
     while True:
