@@ -16,16 +16,6 @@ class Logic:
         self.product.append(product_object)
         return True
 
-    # def update_product(self, productid, productname, price):
-    #     """Updates the product's name and price based on product ID."""
-    #     for i in self.product:
-    #         if i.productid == productid:
-    #             i.productname = productname
-    #             i.price = price
-    #             return True
-    #         else:
-    #             return False
-
     def update_product(self, updated_product_object):
         """Updates the product's name and price based on product ID."""
         for i in self.product:

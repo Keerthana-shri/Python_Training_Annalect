@@ -1,3 +1,4 @@
+'''Importing necessary modules'''
 from presentation import Presentation
 from logic import Logic
 import product
@@ -30,13 +31,6 @@ def start():
         print ("Product is updated")
     else:
         print ("Product ID is not found")
-
-    # '''Update the information of a product'''
-    # b= logic_object.update_product(1, "Smartphone", 16000)
-    # if b == True:
-    #     print ("Product is updated")
-    # else:
-    #     print ("Product ID is not found")
     
     '''Apply discount to the product's price'''
     d= logic_object.apply_discount(50)
