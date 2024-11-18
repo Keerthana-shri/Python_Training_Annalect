@@ -1,33 +1,6 @@
 from patient import Patient
 import db
 import logic
-# from db import insert_patient, update_patient, select_patient_by_id, select_patient_by_phone, close_connection
-# from logic import add_patient, modify_patient, find_patient_by_id, find_patient_by_phone, close_db_connection
-
-# def add_patient(first_name, last_name, dob, phone_number, email):
-#     insert_patient(first_name, last_name, dob, phone_number, email)
-
-# def modify_patient(patient_id, first_name=None, last_name=None, dob=None, phone_number=None, email=None):
-#     update_patient(patient_id, first_name, last_name, dob, phone_number, email)
-
-# def find_patient_by_id(patient_id):
-#     select_patient_by_id(patient_id)
-
-# def find_patient_by_phone(phone_number):
-#     select_patient_by_phone(phone_number)
-
-# def close_db_connection():
-#     close_connection()
-
-
-# patient1 = Patient('a', 'b', '1985-06-15', '123-456-7890', 'a@poc.com')
-# add_patient(patient1.first_name, patient1.last_name, patient1.dob, patient1.phone_number, patient1.email)
-
-# modify_patient(1, phone_number='111-222-3333', email='freak@poc.com')
-# find_patient_by_id(1)
-# find_patient_by_phone('987-654-3210')
-
-# close_db_connection()
 
 # Insert some test data
 db.insert_patient('a', 'b', '1985-06-15', '123-456-7890', 'a@poc.com')
