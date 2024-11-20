@@ -34,4 +34,3 @@ class Logic:
         print(f"Total cost of all orders: Rs {total_cost:.2f}")
         for order in self.orders:
             print(f"Order ID: {order.order_id}, Total: Rs {order.total:.2f}")
-

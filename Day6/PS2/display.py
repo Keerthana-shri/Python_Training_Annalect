@@ -40,4 +40,3 @@ for order in logic.list_orders():
 
 '''Summarizing all orders'''
 b= logic.summarize_orders()
-
