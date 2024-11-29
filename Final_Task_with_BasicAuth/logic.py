@@ -25,6 +25,13 @@ class Logic:
             employee.date_of_joining = employee.date_of_joining.strftime('%m/%d/%Y')
         return employee
 
+    def get_all_employees(self):
+        employees = self.db.get_all_employees()
+        for employee in employees:
+            employee.date_of_birth = employee.date_of_birth.strftime('%m/%d/%Y')
+            employee.date_of_joining = employee.date_of_joining.strftime('%m/%d/%Y')
+        return employees
+
     def update_employee(self, emp_id, updates):
         if 'date_of_birth' in updates:
             updates['date_of_birth'] = datetime.strptime(updates['date_of_birth'], '%m/%d/%Y').date()
@@ -38,3 +45,6 @@ class Logic:
 
     def upload_csv(self, csv_content):
         return self.db.upload_csv(csv_content)
+
+
+

@@ -29,6 +29,14 @@ class Database:
 
     def create_employee(self, employee):
         session = self.Session()
+        existing_employee = session.query(Employee).filter(
+            Employee.first_name == employee.first_name,
+            Employee.last_name == employee.last_name,
+            Employee.date_of_birth == employee.date_of_birth
+        ).first()
+        if existing_employee:
+            session.close()
+            return None  # Employee already exists
         session.add(employee)
         session.commit()
         session.refresh(employee)
@@ -40,6 +48,12 @@ class Database:
         employee = session.query(Employee).filter(Employee.id == emp_id).first()
         session.close()
         return employee
+
+    def get_all_employees(self):
+        session = self.Session()
+        employees = session.query(Employee).all()
+        session.close()
+        return employees
 
     def update_employee(self, emp_id, updates):
         session = self.Session()
@@ -59,13 +73,20 @@ class Database:
         for row in reader:
             date_of_birth = datetime.strptime(row['date_of_birth'], '%m/%d/%Y').date()
             date_of_joining = datetime.strptime(row['date_of_joining'], '%m/%d/%Y').date()
-            employee = Employee(
-                first_name=row['first_name'],
-                last_name=row['last_name'],
-                date_of_birth=date_of_birth,
-                date_of_joining=date_of_joining,
-                grade=row['grade']
-            )
-            session.add(employee)
+            existing_employee = session.query(Employee).filter(
+                Employee.first_name == row['first_name'],
+                Employee.last_name == row['last_name'],
+                Employee.date_of_birth == date_of_birth
+            ).first()
+            if not existing_employee:
+                employee = Employee(
+                    first_name=row['first_name'],
+                    last_name=row['last_name'],
+                    date_of_birth=date_of_birth,
+                    date_of_joining=date_of_joining,
+                    grade=row['grade']
+                )
+                session.add(employee)
         session.commit()
         session.close()
+
