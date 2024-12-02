@@ -42,10 +42,29 @@ class Database:
         session.refresh(employee)
         session.close()
         return employee
+    
+    def search_employees(self, first_name, last_name):
+        session = self.Session()
+        employees = session.query(Employee).filter(
+            Employee.first_name == first_name,
+            Employee.last_name == last_name
+        ).all()
+        session.close()
+        return employees  
 
     def get_employee(self, emp_id):
         session = self.Session()
         employee = session.query(Employee).filter(Employee.id == emp_id).first()
+        session.close()
+        return employee
+
+    def get_employee_by_details(self, first_name, last_name, date_of_birth):
+        session = self.Session()
+        employee = session.query(Employee).filter(
+            Employee.first_name == first_name,
+            Employee.last_name == last_name,
+            Employee.date_of_birth == date_of_birth
+        ).first()
         session.close()
         return employee
 

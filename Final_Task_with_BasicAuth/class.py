@@ -8,4 +8,11 @@ class Employee:
         self.grade = grade
 
     def __str__(self):
-        return f"Employee ID: {self.id}, Name: {self.first_name} {self.last_name}, DOB: {self.date_of_birth}, DOJ: {self.date_of_joining}, Grade: {self.grade}"
+        return (
+            f"Employee ID: {self.id}, "
+            f"Name: {self.first_name} {self.last_name}, "
+            f"DOB: {self.date_of_birth}, "
+            f"DOJ: {self.date_of_joining}, "
+            f"Grade: {self.grade}"
+    )
+    
