@@ -76,33 +76,38 @@ def login():
 def create_employee(employee: EmployeeModel):
     errors = []
 
-    '''Validating the date format'''
     if validate_date_format(employee.date_of_birth):
         pass
     else:
         errors.append(
-            {"date_of_birth": "The provided date format is invalid." \
-             "It should be in MM/DD/YYYY format."}
+            {"date_of_birth": "The provided date format is invalid. It should be in MM/DD/YYYY format."}
         )
 
     if validate_date_format(employee.date_of_joining):
         pass
     else:
         errors.append(
-            {"date_of_joining": "The provided date format is invalid." \
-             "It should be in MM/DD/YYYY format."}
+            {"date_of_joining": "The provided date format is invalid. It should be in MM/DD/YYYY format."}
         )
 
-    '''Validating the grade before checking for existing employee details'''
     if employee.grade in Grade.__members__:
         pass
     else:
         errors.append(
-            {"grade": "The provided grade is invalid." \
-                       "It should be 'M1', 'M2', or 'M3'."}
+            {"grade": "The provided grade is invalid. It should be 'M1', 'M2', or 'M3'."}
         )
 
-    '''Checking if the employee exists by all details before creating a new employee'''
+    if validate_name(employee.first_name):
+        pass
+    else:
+        errors.append({"first_name": "The name you entered is invalid."})
+
+    if validate_name(employee.last_name):
+        pass
+    else:
+        errors.append({"last_name": "The name you entered is invalid."})
+
+    '''Checking if the employee exists by first name, last name, and date of birth to avoid duplicates'''
     if len(errors) == 0:
         existing_emp = logic.get_employee_by_details(
             employee.first_name, 
@@ -114,16 +119,6 @@ def create_employee(employee: EmployeeModel):
                 {"employee": f"Employee details of {employee.first_name}" 
                  f" {employee.last_name} are already available."}
             )
-
-    if validate_name(employee.first_name):
-        pass
-    else:
-        errors.append({"first_name": "The name you entered is invalid."})
-
-    if validate_name(employee.last_name):
-        pass
-    else:
-        errors.append({"last_name": "The name you entered is invalid."})
 
     if len(errors) > 0:
         raise HTTPException(status_code=422, detail=errors)
@@ -139,8 +134,7 @@ def create_employee(employee: EmployeeModel):
         if emp:
             return {
                 "message": (
-                    f"Employee details of {emp.first_name}" 
-                    f" {emp.last_name} have been added successfully."
+                    f"Employee details of {emp.first_name} {emp.last_name} have been added successfully."
                 )
             }
     except ValidationError as e:
